@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ORI-CRUIT WhatsApp Importer - Review Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#308ce8",
+                        "accent-purple": "#8b5cf6",
+                        "accent-orange": "#f97316",
+                        "background-light": "#f8fafc",
+                        "surface-light": "#ffffff",
+                        "border-light": "#e2e8f0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "4px",
+                        "lg": "4px",
+                        "xl": "4px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+        .active-field-glow:focus-within {
+            box-shadow: 0 0 8px rgba(48, 140, 232, 0.15);
+            border-color: #308ce8;
+        }
+        .theme-gradient-bg {
+            background: linear-gradient(135deg, #308ce8 0%, #8b5cf6 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-800 font-display selection:bg-primary/10">
+<div class="flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-border-light bg-surface-light px-6 py-3">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight text-slate-900">ORI-CRUIT</h2>
+</div>
+<div class="h-6 w-px bg-border-light"></div>
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500">Importers</span>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="text-slate-500">WhatsApp Business</span>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="text-primary font-medium">Review - Session #8291</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors">search</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors">notifications</span>
+<span class="absolute top-2.5 right-2.5 flex h-1.5 w-1.5 rounded-full bg-primary"></span>
+</div>
+<button class="theme-gradient-bg px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white hover:brightness-105 transition-all shadow-sm">
+                Finalize Import
+            </button>
+<div class="h-8 w-8 bg-slate-100 border border-border-light rounded" data-alt="User profile avatar placeholder"></div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Rail: Navigation -->
+<aside class="w-16 flex flex-col items-center border-r border-border-light bg-surface-light py-6 gap-8">
+<div class="flex flex-col gap-6">
+<button class="text-primary group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">download</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</button>
+</div>
+<div class="mt-auto">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">help</span>
+</button>
+</div>
+</aside>
+<!-- Center Panel: Chat Transcript -->
+<section class="flex flex-1 flex-col bg-slate-50 overflow-hidden">
+<div class="border-b border-border-light bg-surface-light px-6 py-4 flex items-center justify-between">
+<div>
+<h1 class="text-sm font-semibold text-slate-900 uppercase tracking-widest">Conversation Transcript</h1>
+<p class="text-xs text-slate-500 mt-0.5">WhatsApp Business API • 2023-10-24 14:22 GMT</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-blue-50 border border-blue-100 px-3 py-1 text-[10px] font-bold text-blue-600">REVIEW_REQUIRED</span>
+<span class="bg-slate-100 border border-border-light px-3 py-1 text-[10px] font-bold text-slate-500">ID: WA_8291</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar space-y-6">
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl">
+<div class="h-8 w-8 shrink-0 bg-slate-200 flex items-center justify-center border border-border-light rounded">
+<span class="text-[10px] font-bold text-slate-600">C</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-700">Candidate</span>
+<span class="text-[10px] text-slate-400">14:22</span>
+</div>
+<div class="bg-surface-light border border-border-light p-4 text-sm leading-relaxed text-slate-600 shadow-sm rounded">
+                            Hi, I'm interested in the Senior Product Designer role. My name is Alex River, and I have 6 years of experience. You can reach me at alex.r@example.com.
+                        </div>
+</div>
+</div>
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl ml-auto flex-row-reverse">
+<div class="h-8 w-8 shrink-0 bg-blue-50 flex items-center justify-center border border-blue-100 rounded">
+<span class="text-[10px] font-bold text-primary">OS</span>
+</div>
+<div class="flex flex-col gap-1.5 items-end">
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-400">14:23</span>
+<span class="text-xs font-bold text-primary">ORI-CRUIT Bot</span>
+</div>
+<div class="bg-blue-50/50 border border-blue-100 p-4 text-sm leading-relaxed text-slate-700 shadow-sm rounded">
+                            Great to hear, Alex! Could you please share a link to your portfolio or your CV file?
+                        </div>
+</div>
+</div>
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl">
+<div class="h-8 w-8 shrink-0 bg-slate-200 flex items-center justify-center border border-border-light rounded">
+<span class="text-[10px] font-bold text-slate-600">C</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-700">Candidate</span>
+<span class="text-[10px] text-slate-400">14:25</span>
+</div>
+<div class="bg-surface-light border border-border-light p-4 text-sm leading-relaxed text-slate-600 shadow-sm rounded">
+                            Sure, here is my LinkedIn: linkedin.com/in/alexriver-design. I'm currently at TechFlow as a Lead Designer.
+                        </div>
+<div class="mt-2 bg-slate-50 border border-blue-100 p-2 flex items-center gap-3 rounded">
+<span class="material-symbols-outlined text-primary text-sm">link</span>
+<span class="text-xs text-primary underline truncate cursor-pointer font-medium">linkedin.com/in/alexriver-design</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Rail: Candidate Analysis -->
+<aside class="w-80 flex flex-col border-l border-border-light bg-surface-light overflow-hidden">
+<div class="p-6 border-b border-border-light">
+<h2 class="text-xs font-bold text-slate-900 uppercase tracking-widest mb-1">Entity Extraction</h2>
+<p class="text-xs text-slate-500">Verify and correct identified data.</p>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<!-- Basic Info -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+<span class="material-symbols-outlined text-sm">person</span>
+                        PERSONAL IDENTITY
+                    </div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-500 uppercase">Full Name</label>
+<div class="active-field-glow flex border border-border-light bg-slate-50/50 p-2 group rounded">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-slate-900 p-0" type="text" value="Alex River"/>
+<span class="material-symbols-outlined text-xs text-primary/60 group-focus-within:text-primary">verified</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-500 uppercase">Email Address</label>
+<div class="active-field-glow border border-border-light bg-slate-50/50 p-2 rounded">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-slate-900 p-0" type="email" value="alex.r@example.com"/>
+</div>
+</div>
+</div>
+<div class="h-px bg-border-light w-full"></div>
+<!-- Professional Context -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+<span class="material-symbols-outlined text-sm">work</span>
+                        PROFESSIONAL CONTEXT
+                    </div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-500 uppercase">Current Role</label>
+<div class="active-field-glow border border-border-light bg-slate-50/50 p-2 rounded">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-slate-900 p-0" type="text" value="Lead Designer"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-500 uppercase">Current Company</label>
+<div class="active-field-glow border border-border-light bg-slate-50/50 p-2 rounded">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-slate-900 p-0" type="text" value="TechFlow"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-500 uppercase">Experience Level</label>
+<div class="active-field-glow border border-border-light bg-slate-50/50 p-2 rounded">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-slate-900 p-0" type="text" value="6 Years"/>
+</div>
+</div>
+</div>
+<div class="h-px bg-border-light w-full"></div>
+<!-- Extracted Tags -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+<span class="material-symbols-outlined text-sm">label</span>
+                        SYSTEM TAGS
+                    </div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-blue-50 text-primary border border-blue-100 px-2 py-1 text-[10px] font-bold rounded">WHATSAPP_SOURCE</span>
+<span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-1 text-[10px] font-bold rounded">PRODUCT_DESIGN</span>
+<span class="bg-slate-100 text-slate-600 border border-border-light px-2 py-1 text-[10px] font-bold rounded">ACTIVE_CANDIDATE</span>
+<button class="border border-dashed border-slate-300 rounded px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-primary hover:border-primary transition-colors">+ ADD TAG</button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-border-light bg-slate-50/30 flex flex-col gap-3">
+<button class="w-full border border-border-light bg-white py-3 text-xs font-bold uppercase tracking-widest text-slate-600 hover:bg-slate-50 transition-colors rounded shadow-sm">
+                    Discard Session
+                </button>
+<button class="w-full theme-gradient-bg py-3 text-xs font-bold uppercase tracking-widest text-white hover:brightness-105 transition-all rounded shadow-md">
+                    Approve &amp; Create Profile
+                </button>
+</div>
+</aside>
+</main>
+<!-- Status Bar -->
+<footer class="h-8 border-t border-border-light bg-surface-light flex items-center justify-between px-6 text-[10px] font-medium text-slate-400 uppercase tracking-widest">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-primary"></span> System Online</span>
+<span class="text-border-light">|</span>
+<span>Latency: 42ms</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Model: GPT-4-EXTRACT-02</span>
+<span>Confidence: 98.4%</span>
+</div>
+</footer>
+</div>
+</body></html>

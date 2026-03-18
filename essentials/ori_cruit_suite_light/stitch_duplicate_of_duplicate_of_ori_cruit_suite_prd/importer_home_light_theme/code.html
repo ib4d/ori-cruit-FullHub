@@ -1,0 +1,303 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ORI-CRUIT | WhatsApp Talent Importer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#308ce8", // From THEME_13
+                        "accent-orange": "#FFB347", // Softened for light theme
+                        "accent-purple": "#B19CD9", // Softened for light theme
+                        "background-light": "#FFFFFF",
+                        "background-alt": "#F8FAFC",
+                        "slate-custom": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    backgroundImage: {
+                        'soft-gradient': 'linear-gradient(to right, #308ce8, #B19CD9, #FFB347)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .neon-glow {
+            box-shadow: 0 10px 30px rgba(48, 140, 232, 0.1);
+        }
+        .editorial-track {
+            letter-spacing: -0.04em;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #308ce8, #B19CD9, #FFB347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-hover:hover {
+            background: linear-gradient(to right, #308ce8, #FFB347);
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 font-display selection:bg-primary selection:text-white">
+<nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl font-bold" style="">bolt</span>
+</div>
+<span class="text-xl font-black tracking-tighter uppercase italic" style="">ORI-CRUIT</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-xs uppercase font-bold tracking-widest hover:text-primary transition-colors text-slate-600" href="#" style="">Platform</a>
+<a class="text-xs uppercase font-bold tracking-widest hover:text-primary transition-colors text-slate-600" href="#" style="">Solutions</a>
+<a class="text-xs uppercase font-bold tracking-widest hover:text-primary transition-colors text-slate-600" href="#" style="">Pricing</a>
+<a class="text-xs uppercase font-bold tracking-widest hover:text-primary transition-colors text-slate-600" href="#" style="">Resources</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 text-xs uppercase font-bold tracking-widest border border-slate-200 hover:border-primary transition-all text-slate-700" style="">Log In</button>
+<button class="px-6 py-2 text-xs uppercase font-bold tracking-widest bg-primary text-white hover:brightness-110 transition-all shadow-lg shadow-primary/20" style="">Get Started</button>
+</div>
+</div>
+</nav>
+<header class="relative pt-24 pb-32 overflow-hidden border-b border-slate-100 bg-background-alt">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-10">
+<div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-primary rounded-full blur-[160px]"></div>
+<div class="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] bg-accent-orange rounded-full blur-[160px]"></div>
+</div>
+<div class="max-w-5xl mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] uppercase font-black tracking-[0.2em] mb-8" style="">
+                AI-Powered Talent Acquisition
+            </div>
+<h1 class="text-6xl md:text-8xl font-black editorial-track leading-[0.9] mb-8 uppercase italic text-slate-900" style="">
+                Turn Chats <br> <span class="text-gradient" style="">Into Pipeline</span>
+</h1>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed" style="">
+                Instantly transform messy WhatsApp chat exports into structured candidate profiles. Our proprietary LLM handles the parsing, so you can focus on the hiring.
+            </p>
+</div>
+<div class="max-w-3xl mx-auto group">
+<div class="relative border-2 border-dashed border-slate-300 bg-white p-12 text-center group-hover:border-primary/50 transition-colors duration-500 shadow-sm">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex flex-col items-center gap-6">
+<div class="w-16 h-16 bg-background-alt border border-slate-200 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="">upload_file</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold uppercase tracking-tight mb-2 text-slate-900" style="">Drop your .txt export</h3>
+<p class="text-slate-500 text-sm" style="">Drag your WhatsApp chat log here or <span class="text-primary underline cursor-pointer" style="">browse files</span></p>
+</div>
+<div class="flex gap-4 mt-4">
+<div class="flex items-center gap-2 text-[10px] uppercase font-bold text-slate-400" style="">
+<span class="material-symbols-outlined text-sm" style="">lock</span> Secure processing
+                        </div>
+<div class="flex items-center gap-2 text-[10px] uppercase font-bold text-slate-400" style="">
+<span class="material-symbols-outlined text-sm" style="">bolt</span> Instant parsing
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="py-24 bg-white border-b border-slate-100">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-end justify-between mb-16">
+<div>
+<h2 class="text-4xl font-black uppercase italic editorial-track leading-none text-slate-900" style="">Recent Jobs</h2>
+<p class="text-slate-400 mt-4 text-sm font-medium uppercase tracking-widest" style="">Active opportunities across your network</p>
+</div>
+<button class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary border-b border-primary pb-1" style="">
+                View All Positions <span class="material-symbols-outlined text-sm" style="">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-slate-50 border border-slate-100 p-8 hover:bg-white transition-all group relative overflow-hidden shadow-sm">
+<div class="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-300"></div>
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-1" style="">Tech</span>
+<span class="text-slate-400 text-xs" style="">24h ago</span>
+</div>
+<h3 class="text-2xl font-black uppercase italic mb-2 leading-tight group-hover:text-primary transition-colors text-slate-900" style="">Senior Product <br>Director</h3>
+<p class="text-slate-500 text-sm mb-8" style="">Remote / $180k - $240k</p>
+<div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+<span class="text-slate-900" style="">12 Applicants</span>
+<div class="w-1 h-1 bg-slate-200"></div>
+<span class="text-slate-400 underline underline-offset-4 cursor-pointer hover:text-primary" style="">Review Queue</span>
+</div>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-8 hover:bg-white transition-all group relative overflow-hidden shadow-sm">
+<div class="absolute top-0 left-0 w-1 h-0 bg-accent-purple group-hover:h-full transition-all duration-300"></div>
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] font-black uppercase tracking-widest text-accent-purple bg-accent-purple/10 px-2 py-1" style="">Design</span>
+<span class="text-slate-400 text-xs" style="">2d ago</span>
+</div>
+<h3 class="text-2xl font-black uppercase italic mb-2 leading-tight group-hover:text-accent-purple transition-colors text-slate-900" style="">Principal Brand <br>Designer</h3>
+<p class="text-slate-500 text-sm mb-8" style="">London / £90k - £120k</p>
+<div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+<span class="text-slate-900" style="">8 Applicants</span>
+<div class="w-1 h-1 bg-slate-200"></div>
+<span class="text-slate-400 underline underline-offset-4 cursor-pointer hover:text-accent-purple" style="">Review Queue</span>
+</div>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-8 hover:bg-white transition-all group relative overflow-hidden shadow-sm">
+<div class="absolute top-0 left-0 w-1 h-0 bg-accent-orange group-hover:h-full transition-all duration-300"></div>
+<div class="flex justify-between items-start mb-12">
+<span class="text-[10px] font-black uppercase tracking-widest text-accent-orange bg-accent-orange/10 px-2 py-1" style="">Engineering</span>
+<span class="text-slate-400 text-xs" style="">3d ago</span>
+</div>
+<h3 class="text-2xl font-black uppercase italic mb-2 leading-tight group-hover:text-accent-orange transition-colors text-slate-900" style="">Rust Systems <br>Engineer</h3>
+<p class="text-slate-500 text-sm mb-8" style="">San Francisco / $200k+</p>
+<div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+<span class="text-slate-900" style="">42 Applicants</span>
+<div class="w-1 h-1 bg-slate-200"></div>
+<span class="text-slate-400 underline underline-offset-4 cursor-pointer hover:text-accent-orange" style="">Review Queue</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-alt relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<h2 class="text-center text-4xl font-black uppercase italic editorial-track mb-20 text-slate-900" style="">How It Works</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="relative">
+<div class="text-8xl font-black text-slate-200/50 absolute -top-10 -left-4 pointer-events-none" style="">01</div>
+<div class="relative z-10">
+<h4 class="text-lg font-black uppercase mb-4 text-primary" style="">Export</h4>
+<p class="text-slate-600 text-sm leading-relaxed" style="">Go to your WhatsApp group, click 'Export Chat' and select 'Without Media'.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-8xl font-black text-slate-200/50 absolute -top-10 -left-4 pointer-events-none" style="">02</div>
+<div class="relative z-10">
+<h4 class="text-lg font-black uppercase mb-4 text-accent-purple" style="">Upload</h4>
+<p class="text-slate-600 text-sm leading-relaxed" style="">Drag the .txt file into ORI-CRUIT. Our AI starts mapping conversations to skills.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-8xl font-black text-slate-200/50 absolute -top-10 -left-4 pointer-events-none" style="">03</div>
+<div class="relative z-10">
+<h4 class="text-lg font-black uppercase mb-4 text-primary" style="">Enrich</h4>
+<p class="text-slate-600 text-sm leading-relaxed" style="">We automatically find LinkedIn profiles and GitHub repos linked to the talent.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-8xl font-black text-slate-200/50 absolute -top-10 -left-4 pointer-events-none" style="">04</div>
+<div class="relative z-10">
+<h4 class="text-lg font-black uppercase mb-4 text-accent-orange" style="">Import</h4>
+<p class="text-slate-600 text-sm leading-relaxed" style="">One-click sync to your existing ATS or CRM. Clean, structured, and ready to hire.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white text-slate-900">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-5xl font-black uppercase italic editorial-track leading-[0.95] mb-8" style="">
+                Built for high <br>growth teams <br>moving at <span class="text-white bg-slate-900 px-2" style="">lightspeed</span>.
+            </h2>
+<p class="text-slate-600 text-lg mb-12" style="">
+                Stop wasting hours manually copying numbers and names. Our platform processes thousands of messages in seconds, categorizing talent by seniority, skill, and intent.
+            </p>
+<div class="flex flex-col gap-6">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 bg-slate-900 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="">psychology</span>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-tight text-sm text-slate-900" style="">Contextual Parsing</h5>
+<p class="text-slate-500 text-xs" style="">Understands colloquialisms and industry jargon inside chat logs.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 bg-slate-900 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-accent-orange" style="">security</span>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-tight text-sm text-slate-900" style="">Enterprise Security</h5>
+<p class="text-slate-500 text-xs" style="">SOC2 compliant data processing. Your logs are deleted post-parsing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative aspect-square bg-slate-100 border border-slate-200">
+<img alt="Data visualization dashboard" class="w-full h-full object-cover grayscale opacity-90 contrast-110" data-alt="Monochrome data visualization dashboard showing hiring metrics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Rd6eItGSCFkfb1TVGKVB6_0SDmMmoo4iP2B4beH7ekZKKmjFdPjF7T9pAfyaiBBENcEznt4-m7-roa7Fe_1S4yGDP_u_5KOKAktRZcbU9zRvdjHoDEj8xLAM0iFEsS_WySAo3pB9-w6wkYs_g-6ucaiAFs2lXEBfYFqUNtVudyVlBnahiSpx-41lymUjXKhCTmxly0CvCWtcRDJrH-NIbfZ2_MRc-yHvtC-7qMK7BN5TESwYYuTvzw-8QNH_M4tCfd-cQioabA" style="">
+<div class="absolute inset-0 bg-primary/5 mix-blend-multiply"></div>
+<div class="absolute -bottom-8 -left-8 bg-white text-slate-900 p-8 max-w-[280px] neon-glow border border-slate-100">
+<p class="text-4xl font-black editorial-track leading-none italic mb-2 text-gradient" style="">94%</p>
+<p class="text-[10px] uppercase font-black tracking-widest text-slate-500" style="">Time saved per candidate import compared to manual entry.</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-white pt-24 pb-12 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-6 h-6 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs font-bold" style="">bolt</span>
+</div>
+<span class="text-lg font-black tracking-tighter uppercase italic text-slate-900" style="">ORI-CRUIT</span>
+</div>
+<p class="text-slate-500 text-xs leading-relaxed max-w-[200px]" style="">
+                    The future of chat-based recruitment operations.
+                </p>
+</div>
+<div>
+<h6 class="text-[10px] uppercase font-black tracking-widest text-primary mb-8" style="">Platform</h6>
+<ul class="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-slate-600">
+<li class="" style=""><a class="hover:text-primary transition-colors" href="#" style="">Importer</a></li>
+<li class="" style=""><a class="hover:text-primary transition-colors" href="#" style="">Enrichment</a></li>
+<li class="" style=""><a class="hover:text-primary transition-colors" href="#" style="">API Docs</a></li>
+<li class="" style=""><a class="hover:text-primary transition-colors" href="#" style="">Integrations</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[10px] uppercase font-black tracking-widest text-accent-purple mb-8" style="">Company</h6>
+<ul class="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-slate-600">
+<li class="" style=""><a class="hover:text-accent-purple transition-colors" href="#" style="">About Us</a></li>
+<li class="" style=""><a class="hover:text-accent-purple transition-colors" href="#" style="">Careers</a></li>
+<li class="" style=""><a class="hover:text-accent-purple transition-colors" href="#" style="">Contact</a></li>
+<li class="" style=""><a class="hover:text-accent-purple transition-colors" href="#" style="">Privacy</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[10px] uppercase font-black tracking-widest text-accent-orange mb-8" style="">Newsletter</h6>
+<div class="flex border border-slate-200 p-1">
+<input class="bg-transparent border-none text-[10px] font-bold tracking-widest focus:ring-0 grow placeholder:text-slate-400" placeholder="EMAIL ADDRESS" type="email">
+<button class="bg-slate-900 text-white px-4 py-2 text-[10px] font-black uppercase hover:bg-primary transition-colors" style="">JOIN</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-100 gap-6">
+<p class="text-[10px] uppercase font-black tracking-[0.3em] text-slate-400" style="">© 2026 ORI-CRUIT suite. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8">
+<span class="text-slate-400 text-xs cursor-pointer hover:text-slate-900" style="">TWITTER</span>
+<span class="text-slate-400 text-xs cursor-pointer hover:text-slate-900" style="">LINKEDIN</span>
+<span class="text-slate-400 text-xs cursor-pointer hover:text-slate-900" style="">DRIBBBLE</span>
+</div>
+</div>
+</div>
+</footer>
+</body><div style="all: initial;"></div></html>

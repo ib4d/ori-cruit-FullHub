@@ -1,0 +1,82 @@
+@import '@fontsource/anton/400.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-base: theme('colors.bg.base');
+    --bg-soft: theme('colors.bg.soft');
+    --bg-panel: theme('colors.bg.panel');
+    --bg-paper: theme('colors.bg.paper');
+    
+    --ink-primary: theme('colors.ink.primary');
+    --ink-secondary: theme('colors.ink.secondary');
+    --ink-muted: theme('colors.ink.muted');
+    --ink-inverse: theme('colors.ink.inverse');
+    
+    --line-hair: theme('colors.line.hair');
+    --line-soft: theme('colors.line.soft');
+    --line-strong: theme('colors.line.strong');
+    
+    --radius: 0px;
+  }
+
+  * {
+    border-color: var(--line-hair);
+    border-radius: 0 !important; /* HARD RULE: 0 border radius on all UI elements */
+    box-shadow: none !important; /* Extremely soft shadow only for floating, else none */
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--ink-primary);
+    font-family: theme('fontFamily.ui');
+    font-size: theme('fontSize.ui-md');
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Gradient recipes */
+  .grad-atmosphere-a {
+    background: radial-gradient(circle at top left, theme('colors.accent.blush') 0%, theme('colors.accent.lime') 50%, transparent 100%);
+    opacity: 0.15;
+    filter: blur(80px);
+  }
+  
+  .grad-atmosphere-b {
+    background: radial-gradient(circle at bottom right, theme('colors.accent.rose') 0%, theme('colors.accent.beige') 50%, transparent 100%);
+    opacity: 0.15;
+    filter: blur(80px);
+  }
+  
+  .grad-atmosphere-c {
+    background: radial-gradient(circle at center, theme('colors.accent.lime') 0%, theme('colors.accent.blush') 50%, theme('colors.bg.base') 100%);
+    opacity: 0.15;
+    filter: blur(80px);
+  }
+
+  /* Structural rules */
+  .border-hair {
+    border: 1px solid var(--line-hair);
+  }
+  
+  .border-strong {
+    border: 1px solid var(--ink-primary);
+  }
+  
+  .shadow-floating {
+    box-shadow: 0 32px 64px -16px rgba(0,0,0,0.08) !important;
+  }
+}

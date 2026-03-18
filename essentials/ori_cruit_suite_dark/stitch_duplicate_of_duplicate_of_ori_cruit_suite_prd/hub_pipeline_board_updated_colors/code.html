@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2bad",
+                        "accent-pink": "#ee2bad",
+                        "accent-purple": "#a855f7",
+                        "accent-orange": "#f97316",
+                        "background-light": "#fdf8fa",
+                        "background-dark": "#0f0c13",
+                        "card-dark": "#1a1622",
+                        "border-dark": "#2d2638",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .kanban-column {
+            min-width: 300px;
+            width: 300px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f0c13;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d2638;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(238, 43, 173, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ee2bad 0%, #a855f7 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #ee2bad 0%, #a855f7 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-border-dark bg-background-dark px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="size-6 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">grid_view</span>
+</div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight uppercase">ORI-CRUIT <span class="gradient-text font-normal">Hub</span></h2>
+</div>
+<div class="flex items-center bg-border-dark h-10 px-3 group">
+<span class="material-symbols-outlined text-primary/60 group-focus-within:text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-slate-100 placeholder:text-primary/40 w-64" placeholder="Search candidates..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="flex items-center gap-8">
+<a class="text-slate-100 text-sm font-medium border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Pipeline</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Candidates</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex gap-2 ml-4">
+<button class="flex items-center justify-center size-10 bg-border-dark text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center size-10 bg-border-dark text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="size-10 bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA17QhXZ2BMYuDiYlija6nFTNnrjuEGxqqx1_GQcUAChYGlDdI0f6jMecMYQLqYE6oecfjeM-wlwprDGAMGrjtX-vvljg7XZd5xV5IomJJjnD2ymaPukC6ddXVKrpBrYnucrw3iYWNQpFNpqiH1wQkv8WuGGYFWW4GYDzE2mUz7rEkORpyC0TLf9rnfKuQ_UZZrJXmwfN3rKY-hs0MvNvV7P98om2kt1FWpraUwR4W9ay83y6sH6FDr3o7tqvGauCuYILqc8IWYaA"/>
+</div>
+</div>
+</header>
+<!-- Sub Header & Filters -->
+<div class="bg-background-dark border-b border-border-dark px-10 py-4 flex items-center justify-between">
+<div>
+<h1 class="text-2xl font-bold text-slate-100">Engineering Pipeline</h1>
+<p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Operational View • Q3 Hiring Cycle</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-border-dark px-4 py-2 text-sm text-slate-100 hover:bg-border-dark/80">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                Department: Engineering
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 bg-border-dark px-4 py-2 text-sm text-slate-100 hover:bg-border-dark/80">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                Remote
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 gradient-bg px-6 py-2 text-sm font-bold text-white uppercase shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Candidate
+            </button>
+</div>
+</div>
+<!-- Kanban Board -->
+<main class="flex-1 overflow-x-auto overflow-y-hidden custom-scrollbar bg-[#09070c]">
+<div class="flex h-full p-6 gap-6 min-w-max">
+<!-- Column: Applied -->
+<div class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-border-dark pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-slate-500"></span>
+<h3 class="font-bold text-slate-100 uppercase tracking-tight">Applied</h3>
+<span class="text-xs bg-border-dark text-slate-400 px-2 py-0.5">12</span>
+</div>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">more_horiz</span>
+</div>
+<div class="flex flex-col gap-3 overflow-y-auto custom-scrollbar pr-1">
+<!-- Candidate Card -->
+<div class="bg-card-dark border-l-4 border-slate-500 p-4 hover:border-primary transition-all cursor-pointer group neon-glow">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-slate-100 group-hover:text-primary transition-colors">Marcus Chen</h4>
+<p class="text-xs text-slate-400 mt-0.5">Senior Backend Engineer</p>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-500">2d ago</span>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-0.5 border border-emerald-500/20">LOW RISK</span>
+</div>
+<div class="size-7 bg-border-dark border border-slate-700 overflow-hidden">
+<img alt="Recruiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEvlitcy471AGW4qZadtDVUaHF0Vz0xr8US0dLx0Dq1k6f0a0jBg1UYeDBnXBgfbhfZP_ntk46Lfgqa7QPg-EwkpI2Kd560jTJe0ZbCL5q08HfRl9sUw4igyu2odGYsLN2Y1ZP_52UBT5hDjMPZfb3k9kK9yI3vtByWi59vJe9_-sUSr_tsaJY8hTvzqu5J5PN_kjMVLM5wZKmLfnTHYnZ6dNB2e0SBtDUJURGkmSyBIlGUDZiusugKZlA-NF0rhpZxDLDYuIwhA"/>
+</div>
+</div>
+</div>
+<div class="bg-card-dark border-l-4 border-slate-500 p-4 hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-slate-100">Sarah Jenkins</h4>
+<p class="text-xs text-slate-400 mt-0.5">Systems Architect</p>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-500">5h ago</span>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-amber-500/10 text-amber-500 text-[10px] font-bold px-2 py-0.5 border border-amber-500/20">NOTICE PERIOD</span>
+</div>
+<div class="size-7 bg-border-dark border border-slate-700 overflow-hidden">
+<img alt="Recruiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnm4Em5gPGqNO3ApNN1Vybxm5qNZgeDlAJwfFJzopHFVgtBLtnGE8ZYw4afrv_6eHWeCuh93c5yKxNGrW1v3q0VF5tYgKO2AV5pV4UO-Dadw1D7EMJ9tsSBwjcr9kTapv6LSax01OWNdKJvnfBjSz_ok5tKnUL7JKNrL3ZcuTE1U0WObf9p4AmxMQWx0oij2pw2KqF3IOLO5WNLXq6X6x9EtcLKplWZuNwxSxHYzHvbKQfILGE-uuhuuil0GwN9OoUBJndjVTtQ"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Screening -->
+<div class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-primary pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-primary"></span>
+<h3 class="font-bold text-slate-100 uppercase tracking-tight">Screening</h3>
+<span class="text-xs bg-primary/20 text-primary px-2 py-0.5">5</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">more_horiz</span>
+</div>
+<div class="flex flex-col gap-3 overflow-y-auto custom-scrollbar pr-1">
+<div class="bg-card-dark border-l-4 border-primary p-4 neon-glow border-r border-t border-b border-primary/20">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-primary">Alex Rivera</h4>
+<p class="text-xs text-slate-400 mt-0.5">Fullstack Developer</p>
+</div>
+<span class="text-[10px] uppercase font-bold text-primary">Active Now</span>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-0.5 border border-emerald-500/20">QUALIFIED</span>
+</div>
+<div class="flex -space-x-2">
+<div class="size-7 bg-border-dark border border-primary/40 overflow-hidden">
+<img alt="Recruiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOdKzkfHvM8ZAA1urSiSJkB5Zzvs1DrNf4lieOanTP0k3IcD80exAhoY1un-dKki7sdlHFMC4O0liz55duhAQH8l5u-BvR5EGYblhJyBkdZQz-RrmCDTRUpep_aVbS8uarPk-__0C_hQ3XPyaWFPJ3lXq1RgrPAyAbwJa7wWA-ey0DubV660l5EXxC3uEVCgEZaY1AAhUpTYZr7ySeCZnEXqsbQU0Hxlfzq7LqiHQ9BbsL6DAIy_FP_n_6m6Fx6s3Rc5f3lPmplA"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Interview -->
+<div class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-border-dark pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-accent-purple"></span>
+<h3 class="font-bold text-slate-100 uppercase tracking-tight">Interview</h3>
+<span class="text-xs bg-border-dark text-slate-400 px-2 py-0.5">3</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">more_horiz</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="bg-card-dark border-l-4 border-accent-purple p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-slate-100">Elena Sokolov</h4>
+<p class="text-xs text-slate-400 mt-0.5">Cloud Architect</p>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-2 text-[10px] text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                            Tomorrow, 10:00 AM
+                        </div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-accent-orange/10 text-accent-orange text-[10px] font-bold px-2 py-0.5 border border-accent-orange/20">COMPETING OFFER</span>
+</div>
+<div class="size-7 bg-border-dark border border-slate-700 overflow-hidden">
+<img alt="Recruiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBut6-leQr-V6XLH4sXpEXtWENwGX9WuRfjMJUQNKhf1CNqoIHetiblcUl4xY9nVSDYYa9IcU0gAnHlT_tUixBxH3ruok6vicWan2P1-HnzLNgI-r0X7RIamaGC7FPgWt6mnEYZvcsISxzXyxeArAttSUJnl6kfCRQCUl_8ZvIlXEc2HfeKnbpVSvycL0qmFtFe5SabEA_PF5pemJD85B9dHTw9Mbxyc0YAkG6VNzl64PsVOpnrJ7fHluQkxyojnG_9rbknW89TTw"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Offer -->
+<div class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-border-dark pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-accent-orange"></span>
+<h3 class="font-bold text-slate-100 uppercase tracking-tight">Offer</h3>
+<span class="text-xs bg-border-dark text-slate-400 px-2 py-0.5">1</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">more_horiz</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="bg-card-dark border-l-4 border-accent-orange p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-slate-100">David Wilson</h4>
+<p class="text-xs text-slate-400 mt-0.5">DevOps Lead</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-accent-orange/10 text-accent-orange text-[10px] font-bold px-2 py-0.5 border border-accent-orange/20">CONTRACT SENT</span>
+</div>
+<div class="size-7 bg-border-dark border border-slate-700 overflow-hidden">
+<img alt="Recruiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZS0zKUNkCPsM8b2v6SSogRrTTe42wJmhZCpxfDi1MW1uz5gMTs2m-yDRBIEiFHLsEGOMqgSZVqovenpDx41v4Ucr4aAaCdN5Qig-qwvJjNBZ0U_24ktDGNpEPwHknbT0PUgSiWWgOJCzwsTrxiXnAJateu_AiMNCiCVZcqfhxieJURO-H9PhyDPXuxZbzjccJ2EPgpqA6k4uFZHzbiTt_s3iXgQb0V4_zoIB2ihvtX19uCnxnIcygGvJ9KWC_DXMVeOwl9qKZ7Q"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Hired -->
+<div class="kanban-column flex flex-col gap-4 opacity-50">
+<div class="flex items-center justify-between border-b border-border-dark pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-slate-700"></span>
+<h3 class="font-bold text-slate-500 uppercase tracking-tight">Hired</h3>
+<span class="text-xs bg-border-dark text-slate-400 px-2 py-0.5">42</span>
+</div>
+<span class="material-symbols-outlined text-slate-700">more_horiz</span>
+</div>
+<div class="border-2 border-dashed border-border-dark h-32 flex items-center justify-center text-slate-700 text-sm italic">
+                    Archive View Only
+                </div>
+</div>
+</div>
+</main>
+<!-- Footer Stats -->
+<footer class="bg-background-dark border-t border-border-dark px-10 py-3 flex items-center justify-between text-xs font-medium text-slate-400 uppercase tracking-wider">
+<div class="flex gap-8">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">AVG. TIME TO HIRE:</span>
+<span class="text-slate-100">24 Days</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-accent-purple font-bold">PIPELINE VELOCITY:</span>
+<span class="text-slate-100">+12% vs last month</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-accent-orange font-bold">ACTIVE JOBS:</span>
+<span class="text-slate-100">8 Roles</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">sync</span>
+            Last updated: 2 mins ago
+        </div>
+</footer>
+</div>
+</body></html>
