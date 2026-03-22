@@ -1,0 +1,62 @@
+# ============================================================
+# ORI-CRUIT FullHub — Docker Compose
+# Suitable for Hostinger VPS (Ubuntu) deployment
+# ============================================================
+# Usage:
+#   docker compose up -d          # Start all services
+#   docker compose down            # Stop all services
+#   docker compose up -d --build   # Rebuild and restart
+#   docker compose logs -f web     # View frontend logs
+# ============================================================
+
+services:
+  # Frontend (Vite build served by nginx)
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # PostgreSQL database (for future backend use)
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: oricruit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Future services (uncomment when backend is ready) ---
+
+  # api:
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     DATABASE_URL: postgresql://postgres:${DB_PASSWORD:-changeme}@db:5432/oricruit?schema=public
+  #     JWT_SECRET: ${JWT_SECRET}
+  #     NODE_ENV: production
+  #     PORT: 3000
+  #   ports:
+  #     - "127.0.0.1:3000:3000"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   restart: unless-stopped
+
+volumes:
+  pgdata:

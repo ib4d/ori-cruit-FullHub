@@ -44,7 +44,7 @@ export default function ImporterProcessing() {
       <motion.div 
         animate={{ rotate: -360 }}
         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        className="w-[600px] h-[600px] border border-link-hair absolute mix-blend-multiply opacity-20 top-1/2 left-1/2 -mt-[300px] -ml-[300px] border-dashed"
+        className="w-[600px] h-[600px] border border-line-hair absolute mix-blend-multiply opacity-20 top-1/2 left-1/2 -mt-[300px] -ml-[300px] border-dashed"
       />
 
       <div className="z-10 flex flex-col gap-12 items-center text-center max-w-[800px] w-full px-8">

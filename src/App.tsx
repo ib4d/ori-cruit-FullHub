@@ -3,6 +3,7 @@ import HubLayout from "./layouts/HubLayout"
 import ImporterLayout from "./layouts/ImporterLayout"
 
 import MarketingLanding from "./pages/MarketingLanding"
+import NotFound from "./pages/NotFound"
 
 import HubDashboard from "./pages/hub/Dashboard"
 import CandidatesList from "./pages/hub/CandidatesList"
@@ -20,7 +21,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MarketingLanding />} />
-      
+
       {/* ORI-CRUIT HUB */}
       <Route path="/hub" element={<HubLayout />}>
         <Route index element={<HubDashboard />} />
@@ -38,6 +39,9 @@ function App() {
         <Route path="processing" element={<ImporterProcessing />} />
         <Route path="review" element={<ImporterReview />} />
       </Route>
+
+      {/* Catch-all 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
