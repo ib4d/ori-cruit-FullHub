@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ORI-CRUIT WhatsApp Importer - Review Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2bad",
+                        "accent-purple": "#a855f7",
+                        "accent-orange": "#f97316",
+                        "background-light": "#fdf8fb",
+                        "background-dark": "#0f0c11",
+                        "surface-dark": "#18141c",
+                        "border-dark": "#2d2433",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d2433;
+        }
+        .active-field-glow:focus-within {
+            box-shadow: 0 0 8px rgba(238, 43, 173, 0.2);
+            border-color: #ee2bad;
+        }
+        .neon-gradient-text {
+            background: linear-gradient(135deg, #ee2bad 0%, #a855f7 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .neon-gradient-bg {
+            background: linear-gradient(135deg, #ee2bad 0%, #a855f7 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display selection:bg-primary/30">
+<div class="flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-border-dark bg-surface-dark px-6 py-3">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h2 data-i18n-key="brandName" class="text-lg font-bold tracking-tight text-white">ORI-CRUIT</h2>
+</div>
+<div class="h-6 w-px bg-border-dark"></div>
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-400">Importers</span>
+<span class="material-symbols-outlined text-xs text-slate-500">chevron_right</span>
+<span class="text-slate-400">WhatsApp Business</span>
+<span class="material-symbols-outlined text-xs text-slate-500">chevron_right</span>
+<span class="text-primary font-medium">Review - Session #8291</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<select id="lang-select" class="bg-slate-100 dark:bg-surface-dark border border-slate-200 dark:border-primary/20 text-[10px] font-black uppercase tracking-widest px-2 py-1">
+<option value="en">EN</option>
+<option value="es">ES</option>
+<option value="pl">PL</option>
+</select>
+<button id="theme-toggle" class="px-2 py-1 rounded border border-slate-200 dark:border-primary/20 text-sm font-black text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-primary/10 transition" type="button" aria-label="Toggle theme">🌓</button>
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-slate-400 hover:text-white cursor-pointer transition-colors">search</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-slate-400 hover:text-white cursor-pointer transition-colors">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary"></span>
+</div>
+<button class="neon-gradient-bg px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white hover:brightness-110 transition-all shadow-[0_0_15px_rgba(238,43,173,0.3)]">
+                    Finalize Import
+                </button>
+<div class="h-8 w-8 bg-slate-800 border border-border-dark" data-alt="User profile avatar placeholder"></div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Rail: Context & Navigation -->
+<aside class="w-16 flex flex-col items-center border-r border-border-dark bg-surface-dark py-6 gap-8">
+<div class="flex flex-col gap-6">
+<button class="text-primary group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">download</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</button>
+</div>
+<div class="mt-auto">
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">help</span>
+</button>
+</div>
+</aside>
+<!-- Center Panel: Chat Transcript -->
+<section class="flex flex-1 flex-col bg-background-dark overflow-hidden">
+<div class="border-b border-border-dark bg-surface-dark px-6 py-4 flex items-center justify-between">
+<div>
+<h1 class="text-sm font-semibold text-white uppercase tracking-widest">Conversation Transcript</h1>
+<p class="text-xs text-slate-500 mt-0.5">WhatsApp Business API • 2023-10-24 14:22 GMT</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary/10 border border-primary/30 px-3 py-1 text-[10px] font-bold text-primary">REVIEW_REQUIRED</span>
+<span class="bg-slate-800 border border-border-dark px-3 py-1 text-[10px] font-bold text-slate-400">ID: WA_8291</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar space-y-6">
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl">
+<div class="h-8 w-8 shrink-0 bg-slate-800 flex items-center justify-center border border-border-dark">
+<span class="text-[10px] font-bold text-slate-500">C</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-300">Candidate</span>
+<span class="text-[10px] text-slate-600">14:22</span>
+</div>
+<div class="bg-surface-dark border border-border-dark p-4 text-sm leading-relaxed text-slate-300">
+                                Hi, I'm interested in the Senior Product Designer role. My name is Alex River, and I have 6 years of experience. You can reach me at alex.r@example.com.
+                            </div>
+</div>
+</div>
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl ml-auto flex-row-reverse">
+<div class="h-8 w-8 shrink-0 bg-primary/20 flex items-center justify-center border border-primary/30">
+<span class="text-[10px] font-bold text-primary">OS</span>
+</div>
+<div class="flex flex-col gap-1.5 items-end">
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-600">14:23</span>
+<span class="text-xs font-bold text-primary">ORI-CRUIT Bot</span>
+</div>
+<div class="bg-primary/5 border border-primary/20 p-4 text-sm leading-relaxed text-primary/90">
+                                Great to hear, Alex! Could you please share a link to your portfolio or your CV file?
+                            </div>
+</div>
+</div>
+<!-- Message -->
+<div class="flex gap-4 max-w-2xl">
+<div class="h-8 w-8 shrink-0 bg-slate-800 flex items-center justify-center border border-border-dark">
+<span class="text-[10px] font-bold text-slate-500">C</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-300">Candidate</span>
+<span class="text-[10px] text-slate-600">14:25</span>
+</div>
+<div class="bg-surface-dark border border-border-dark p-4 text-sm leading-relaxed text-slate-300">
+                                Sure, here is my LinkedIn: linkedin.com/in/alexriver-design. I'm currently at TechFlow as a Lead Designer.
+                            </div>
+<div class="mt-2 bg-slate-900 border border-primary/20 p-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">link</span>
+<span class="text-xs text-primary underline truncate cursor-pointer">linkedin.com/in/alexriver-design</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Rail: Candidate Analysis & Correction -->
+<aside class="w-80 flex flex-col border-l border-border-dark bg-surface-dark overflow-hidden">
+<div class="p-6 border-b border-border-dark">
+<h2 class="text-xs font-bold text-white uppercase tracking-widest mb-1">Entity Extraction</h2>
+<p class="text-xs text-slate-500">Verify and correct identified data.</p>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<!-- Basic Info -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-500">
+<span class="material-symbols-outlined text-sm">person</span>
+                            PERSONAL IDENTITY
+                        </div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Full Name</label>
+<div class="active-field-glow flex border border-border-dark bg-background-dark/50 p-2 group">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-white p-0" type="text" value="Alex River"/>
+<span class="material-symbols-outlined text-xs text-primary/50 group-focus-within:text-primary">verified</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Email Address</label>
+<div class="active-field-glow border border-border-dark bg-background-dark/50 p-2">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-white p-0" type="email" value="alex.r@example.com"/>
+</div>
+</div>
+</div>
+<div class="h-px bg-border-dark w-full"></div>
+<!-- Professional Context -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-500">
+<span class="material-symbols-outlined text-sm">work</span>
+                            PROFESSIONAL CONTEXT
+                        </div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Current Role</label>
+<div class="active-field-glow border border-border-dark bg-background-dark/50 p-2">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-white p-0" type="text" value="Lead Designer"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Current Company</label>
+<div class="active-field-glow border border-border-dark bg-background-dark/50 p-2">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-white p-0" type="text" value="TechFlow"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Experience Level</label>
+<div class="active-field-glow border border-border-dark bg-background-dark/50 p-2">
+<input class="w-full bg-transparent border-none text-sm focus:ring-0 text-white p-0" type="text" value="6 Years"/>
+</div>
+</div>
+</div>
+<div class="h-px bg-border-dark w-full"></div>
+<!-- Extracted Tags -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-xs font-bold text-slate-500">
+<span class="material-symbols-outlined text-sm">label</span>
+                            SYSTEM TAGS
+                        </div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary/20 text-primary border border-primary/30 px-2 py-1 text-[10px] font-bold">WHATSAPP_SOURCE</span>
+<span class="bg-slate-800 text-slate-400 border border-border-dark px-2 py-1 text-[10px] font-bold">PRODUCT_DESIGN</span>
+<span class="bg-slate-800 text-slate-400 border border-border-dark px-2 py-1 text-[10px] font-bold">ACTIVE_CANDIDATE</span>
+<button class="border border-dashed border-border-dark px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-primary transition-colors">+ ADD TAG</button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-border-dark bg-background-dark/30 flex flex-col gap-3">
+<button class="w-full border border-border-dark bg-slate-800 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-slate-700 transition-colors">
+                        Discard Session
+                    </button>
+<button class="w-full neon-gradient-bg py-3 text-xs font-bold uppercase tracking-widest text-white hover:brightness-110 transition-all">
+                        Approve &amp; Create Profile
+                    </button>
+</div>
+</aside>
+</main>
+<!-- Status Bar -->
+<footer class="h-8 border-t border-border-dark bg-surface-dark flex items-center justify-between px-6 text-[10px] font-medium text-slate-500 uppercase tracking-widest">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-primary"></span> System Online</span>
+<span class="text-border-dark">|</span>
+<span>Latency: 42ms</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Model: GPT-4-EXTRACT-02</span>
+<span>Confidence: 98.4%</span>
+</div>
+</footer>
+</div>
+<script src="./scripts.js"></script>
+</body></html>

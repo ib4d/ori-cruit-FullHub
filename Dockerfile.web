@@ -1,0 +1,17 @@
+FROM node:22-alpine AS builder
+WORKDIR /usr/src/app
+COPY apps/hub-web/package.json apps/hub-web/package-lock.json* ./
+COPY apps/hub-web/yarn.lock* ./
+COPY apps/hub-web/ .
+RUN npm install
+RUN npm run build
+
+FROM node:22-alpine AS runtime
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/.next ./.next
+COPY apps/hub-web/package.json ./package.json
+COPY apps/hub-web/public ./public
+EXPOSE 3000
+ENV PORT=3000
+CMD ["npm", "run", "start"]

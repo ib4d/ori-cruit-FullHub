@@ -1,0 +1,18 @@
+*:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+html, body { margin: 0; height: 100%; }
+body { margin: 0; font-family: 'Spline Sans', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(140deg, #fef2f2, #f4f7fb); color: #0f172a; }
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+.card { background: white; box-shadow: 0 8px 30px rgba(49, 54, 75, 0.08); border-radius: 15px; padding: 1.2rem; border: 1px solid #e2e8f0; }
+.button { background: #0f172a; color: white; padding: 0.65rem 1.1rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 800; box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.button:hover { opacity: 0.95; }
+.button.secondary { background: #334155; }
+.input, .select, .textarea { width: 100%; padding: 0.75rem; margin-top: 0.3rem; margin-bottom: 0.9rem; border: 1px solid #cbd5e1; border-radius: 10px; font-weight: 600; }
+.header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.badge { background: #e2e8f0; color: #0f172a; border-radius: 999px; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+.small-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; background: #ffffff; }
+.text-muted { color: #475569; }
+
+@media (min-width: 768px) {
+  .stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .candidate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+}

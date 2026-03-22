@@ -1,0 +1,25 @@
+{
+  "name": "ori-cruit-fullhub2",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:h-web": "pnpm --filter hub-web dev",
+    "dev:h-api": "pnpm --filter hub-api start:dev",
+    "dev": "concurrently \"pnpm dev:h-web\" \"pnpm dev:h-api\"",
+    "start:h-web": "pnpm --filter hub-web start",
+    "start:h-api": "pnpm --filter hub-api start",
+    "build:h-web": "pnpm --filter hub-web build",
+    "build:h-api": "pnpm --filter hub-api build",
+    "build": "pnpm build:h-web && pnpm build:h-api",
+    "lint": "pnpm --filter hub-web lint && pnpm --filter hub-api lint",
+    "docker:up": "docker compose up --build --detach",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "turbo": "^1.12.0"
+  }
+}

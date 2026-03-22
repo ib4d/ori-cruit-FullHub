@@ -1,0 +1,19 @@
+FROM node:22-alpine AS builder
+WORKDIR /usr/src/app
+COPY apps/hub-api/package.json apps/hub-api/package-lock.json* ./
+COPY apps/hub-api/yarn.lock* ./
+COPY apps/hub-api/prisma ./prisma
+COPY apps/hub-api/src ./src
+RUN npm install
+RUN npx prisma generate
+RUN npm run build
+
+FROM node:22-alpine AS runtime
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/dist ./dist
+COPY apps/hub-api/package.json ./package.json
+COPY apps/hub-api/prisma ./prisma
+EXPOSE 3001
+ENV PORT=3001
+CMD ["node", "dist/main.js"]
