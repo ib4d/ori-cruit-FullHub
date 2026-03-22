@@ -29,8 +29,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.web
-    depends_on:
-      - hub-api
     environment:
       NEXT_PUBLIC_API_BASE_URL: "http://hub-api:3001"
       PORT: 3000
